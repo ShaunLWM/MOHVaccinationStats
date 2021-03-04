@@ -1,7 +1,7 @@
 name: Cron
 on:
     schedule:
-        - cron: "*/5 * * * *"
+        - cron: "0 */3 * * *"
 jobs:
     cron:
         name: Fetch and store
