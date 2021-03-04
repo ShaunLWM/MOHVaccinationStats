@@ -20,6 +20,8 @@ jobs:
                   node-version: "14.16.0"
             - name: yarn install
               run: yarn install
+            - name: compile
+              run: tsc
             - run: node dist/
             - name: commit files
               run: |
