@@ -2,6 +2,7 @@ name: Cron
 on:
     schedule:
         - cron: "0 */3 * * *"
+    workflow_dispatch:
 jobs:
     cron:
         name: Fetch and store
