@@ -19,6 +19,17 @@ import fs from "fs-extra";
 			Number($(`strong:contains("${text}")`).parents().eq(2).siblings().text().replace(/,/g, ""))
 		);
 
+		const previous = history[history.length - 1];
+		console.log(`> Previous day's numbers: ${previous}`);
+		console.log(`>  Totay's numbers: ${p}`);
+
+		const similar =
+			previous.length === p.length && previous.every((element: number, index: number) => element === p[index]);
+
+		if (similar) {
+			return console.error(`> Error: Previous day stats and new stats are the same. Ignoring..`);
+		}
+
 		history[new Date().toISOString().slice(0, 10)] = p;
 		fs.writeFileSync("history.json", JSON.stringify(history, null, 2));
 	} catch (error) {
