@@ -16,7 +16,7 @@ import fs from "fs-extra";
 		const $ = cheerio.load(body);
 		const arr = ["Received First Dose", "Completed Full Vaccination Regimen", "Total Doses Administered"];
 		const p = arr.map((text) =>
-			Number($(`strong:contains("${text}")`).parents().eq(2).siblings().text().replace(",", ""))
+			Number($(`strong:contains("${text}")`).parents().eq(2).siblings().text().replace(/,/g, ""))
 		);
 
 		history[new Date().toISOString().slice(0, 10)] = p;
