@@ -20,15 +20,19 @@ import path from "path";
 			Number($(`strong:contains("${text}")`).parents().eq(2).siblings().text().replace(/,/g, ""))
 		);
 
-		const previous = history[history.length - 1];
-		console.log(`> Previous day's numbers: ${previous}`);
-		console.log(`>  Totay's numbers: ${p}`);
+		const keys = Object.keys(history);
+		if (keys.length > 0) {
+			const previous = history[keys[keys.length - 1]];
+			console.log(`> Previous day's numbers: ${previous}`);
+			console.log(`>  Totay's numbers: ${p}`);
 
-		const similar =
-			previous.length === p.length && previous.every((element: number, index: number) => element === p[index]);
+			const similar =
+				previous.length === p.length &&
+				previous.every((element: number, index: number) => element === p[index]);
 
-		if (similar) {
-			return console.error(`> Error: Previous day stats and new stats are the same. Ignoring..`);
+			if (similar) {
+				return console.error(`> Error: Previous day stats and new stats are the same. Ignoring..`);
+			}
 		}
 
 		history[new Date().toISOString().slice(0, 10)] = p;
