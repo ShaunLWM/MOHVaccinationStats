@@ -1,10 +1,11 @@
 import fetch from "node-fetch";
 import cheerio from "cheerio";
 import fs from "fs-extra";
+import path from "path";
 
 (async () => {
 	try {
-		const history = fs.readJsonSync("history.json", { throws: false }) ?? {};
+		const history = fs.readJsonSync(path.join(__dirname, "..", "history.json"), { throws: false }) ?? {};
 		const response = await fetch("https://www.moh.gov.sg/covid-19/vaccination", {
 			headers: {
 				"user-agent":
