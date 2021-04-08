@@ -23,8 +23,8 @@ import path from "path";
 		const keys = Object.keys(history);
 		if (keys.length > 0) {
 			const previous = history[keys[keys.length - 1]];
-			console.log(`> Previous day's numbers: ${previous}`);
-			console.log(`>  Totay's numbers: ${p}`);
+			console.log(`>  Yesterday's numbers: ${previous}`);
+			console.log(`>  Today's numbers: ${p}`);
 
 			const similar =
 				previous.length === p.length &&
