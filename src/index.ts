@@ -15,7 +15,7 @@ import path from "path";
 
 		const body = await response.text();
 		const $ = cheerio.load(body);
-		const arr = ["Received First Dose", "Completed Full Vaccination Regimen", "Total Doses Administered"];
+		const arr = ["Received at least First Dose", "Completed Full Vaccination Regimen", "Total Doses Administered"];
 		const p = arr.map((text) =>
 			Number($(`strong:contains("${text}")`).parents().eq(2).siblings().text().replace(/,/g, ""))
 		);
